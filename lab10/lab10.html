@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List App</title>
+</head>
+<body>
+    <h2>User List</h2>
+    <input type="text" id="user-input" placeholder="Enter name">
+    <button id="add-user-btn">Add User</button>
+    <button id="clear-users-btn">Clear Users</button>
+    <ul id="user-list"></ul>
+
+    <script>
+        const app = {
+            users: [],
+
+            addUser: function () {
+                const userInput = document.getElementById("user-input");
+                const name = userInput.value.trim();
+
+                if (!name) {
+                    alert("Please enter a name.");
+                    return;
+                }
+
+                // Check for duplicates 
+                if (this.users.some(user => user.toLowerCase() === name.toLowerCase())) {
+                    alert("This name is already in the list.");
+                    return;
+                }
+
+                this.users.push(name);
+                this.displayUsers();
+                userInput.value = ""; 
+            },
+
+            displayUsers: function () {
+                const userList = document.getElementById("user-list");
+                userList.innerHTML = ""; 
+
+                this.users.forEach((user, index) => {
+                    const li = document.createElement("li");
+                    li.textContent = `${index + 1}. ${user} `;
+
+                    //"Remove" button
+                    const removeBtn = document.createElement("button");
+                    removeBtn.textContent = "Remove";
+                    removeBtn.onclick = () => this.removeUser(index);
+
+                    li.appendChild(removeBtn);
+                    userList.appendChild(li);
+                });
+            },
+
+            removeUser: function (index) {
+                this.users.splice(index, 1);
+                this.displayUsers();
+            },
+
+            clearUsers: function () {
+                this.users = [];
+                this.displayUsers();
+            }
+        };
+
+        // Event listeners
+        document.getElementById("add-user-btn").addEventListener("click", () => app.addUser());
+        document.getElementById("clear-users-btn").addEventListener("click", () => app.clearUsers());
+    </script>
+</body>
+</html>

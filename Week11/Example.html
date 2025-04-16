@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+ <meta charset="UTF-8">
+
+ <title>JavaScript Examples</title>
+
+</head>
+
+<body>
+
+ <h1>Check the Console (F12) for Output</h1>
+
+ <script>
+
+  // ----------- Arrow Function Examples -----------
+
+  
+
+  // 1. Simple addition
+
+  const add = (a, b) => a + b;
+
+  console.log("Arrow Function - Add:", add(3, 4)); // 7
+
+
+
+  // 2. Logging each item in an array
+
+  const logItems = items => items.forEach(item => console.log("Item:", item));
+
+  logItems(["apple", "banana", "cherry"]);
+
+
+
+  // 3. Returning an object
+
+  const createUser = (name, age) => ({ name, age });
+
+  console.log("Arrow Function - Create User:", createUser("Alice", 25));
+
+
+
+  // ----------- Rest Parameter Examples -----------
+
+
+
+  // 1. Summing any number of arguments
+
+  const sum = (...nums) => nums.reduce((total, num) => total + num, 0);
+
+  console.log("Rest Params - Sum:", sum(1, 2, 3, 4)); // 10
+
+
+
+  // 2. Logging all arguments
+
+  const logAll = (...args) => console.log("Rest Params - Args:", args);
+
+  logAll("hello", 42, true);
+
+
+
+  // 3. Destructuring with rest
+
+  const [first, ...rest] = [10, 20, 30, 40];
+
+  console.log("Rest Params - First:", first); // 10
+
+  console.log("Rest Params - Rest:", rest); // [20, 30, 40]
+
+
+
+  // ----------- Local Storage Examples -----------
+
+
+
+  // 1. Saving data
+
+  localStorage.setItem("username", "johndoe");
+
+
+
+  // 2. Retrieving data
+
+  const user = localStorage.getItem("username");
+
+  console.log("Local Storage - Retrieved Username:", user); // "johndoe"
+
+
+
+  // 3. Removing data
+
+  localStorage.removeItem("username");
+
+  console.log("Local Storage - Removed Username. Exists now?", localStorage.getItem("username")); // null
+
+ </script>
+
+</body>
+
+</html>

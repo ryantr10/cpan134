@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 11</title>
+</head>
+<body>
+    <script>
+        // Create student object
+        const student = {
+            name: "Ryan",
+            age: 22,
+            subjects: ["Web Programming", "Javascript"],
+            
+            // Method to add a subject
+            addSubject(subject) {
+                this.subjects.push(subject);
+            },
+            
+            // Method to display student info
+            displayInfo() {
+                console.log(`Name: ${this.name}`);
+                console.log(`Age: ${this.age}`);
+                console.log(`Subjects: ${this.subjects.join(", ")}`);
+            }
+        };
+
+        // Test the student object
+        console.log("Initial student info:");
+        student.displayInfo();
+        
+        // Add a new subject
+        student.addSubject("Operating Systems");
+        console.log("\nAfter adding Operating Systems:");
+        student.displayInfo();
+
+        // Function using rest parameters to calculate average
+        function calculateAverage(...scores) {
+            const sum = scores.reduce((acc, curr) => acc + curr, 0);
+            return sum / scores.length;
+        }
+
+        // Test calculateAverage with sample scores
+        const average = calculateAverage(85, 90, 95, 88, 92);
+        console.log(`\nAverage test score: ${average}`);
+    </script>
+</body>
+</html>

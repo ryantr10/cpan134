@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 2 - Parts 2, 3, 4</title>
+    <style>
+        
+        .box-model-demo {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 5px solid black;
+            margin: 20px auto;
+            background-color: #f0f0f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        ul {
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        li {
+            padding: 10px;
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    
+    <button id="clickButton">Click Me!</button>
+
+    
+    <ul id="myList">
+        <li>Front-end</li>
+        <li>Bussiness</li>
+        <li>Gym</li>
+    </ul>
+
+    
+    <div class="box-model-demo" id="boxDemo">Click</div>
+
+    <script>
+        
+        const button = document.getElementById('clickButton');
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        button.addEventListener('click', () => {
+            alert('Button clicked!');
+            button.style.backgroundColor = getRandomColor();
+        });
+
+        
+        function getRandomString() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let result = '';
+            for (let i = 0; i < 8; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        
+        window.onload = function() {
+            const ul = document.getElementById('myList');
+            const newItem = document.createElement('li');
+            newItem.textContent = 'Soccer';
+            ul.appendChild(newItem);
+
+            
+            const listItems = document.getElementsByTagName('li');
+            for (let item of listItems) {
+                item.addEventListener('click', function() {
+                    this.textContent = getRandomString();
+                    this.style.backgroundColor = getRandomColor();
+                });
+            }
+        };
+
+        
+        const box = document.getElementById('boxDemo');
+        box.addEventListener('click', () => {
+            box.style.backgroundColor = getRandomColor();
+            box.style.padding = Math.floor(Math.random() * 30) + 'px';
+        });
+
+        box.addEventListener('mouseover', () => {
+            box.style.borderColor = getRandomColor();
+        });
+
+        box.addEventListener('mouseout', () => {
+            box.style.borderColor = 'black';
+        });
+    </script>
+</body>
+</html>
